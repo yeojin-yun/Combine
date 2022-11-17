@@ -153,9 +153,8 @@ Recived Value:  3
     Recived Value:  8
     Completed
     ```
-    - .max : 위에서 request했던 것 외에 몇개 더 받을 게
-        ```swift
-    // func receive(_ input: String) -> Subscribers.Demand를 .max(5)로 바꿨을 때
+    - .max : 위에서 request했던 것 외에 몇개 더 받을 게 (두 번째 demand에서 max(5)로 바꿨을 때)
+    ```swift
     Received Subscription
     Recived Value:  1
     Recived Value:  2
