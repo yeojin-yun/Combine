@@ -23,7 +23,7 @@ class StringSubscriber: Subscriber {
     
     func receive(_ input: String) -> Subscribers.Demand {
         print("--Recived Value: ", input)
-        
+
         return .none
         // 위의 메서드에서 request했던 걸 바꿀 수 있음
         // .none : Demand 안 바꿀게 그대로 할거야
@@ -47,6 +47,7 @@ class ViewController: UIViewController {
         let subscriber = StringSubscriber() // 나는 구독자
         let subject = PassthroughSubject<String, MyError>()
         
+
 //        subject.subscribe(subscriber)
         let subs = subject.sink { completion in
             switch completion {
@@ -60,6 +61,7 @@ class ViewController: UIViewController {
         }
         
         subject.send("시작")
+
     }
 }
 
