@@ -168,3 +168,5 @@ Recived Value:  3
     ```
 - publisher를 전부 구독해야 `func receive(completion: Subscribers.Completion<Never>)`가 발생되는 것 같음
 ---
+### 12강 - Subjects
+
