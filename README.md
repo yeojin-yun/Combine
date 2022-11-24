@@ -170,5 +170,43 @@ Recived Value:  3
 ---
 ### 12강 - Subjects
 ```swift
-sink
+
+import UIKit
+import Combine
+
+enum MyError: Error {
+    case subscriberError
+}
+
+class StringSubscriber: Subscriber {
+    typealias Input = String
+    typealias Failure = Never // 실패 가능성 없음
+    
+    func receive(subscription: Subscription) {
+        print("Received Subscription")
+        subscription.request(.max(3)) // backpressure - 3개의 결과만 받겠다! 네가 가진 게 100개라도 난 3개만 필요해
+    }
+    
+    func receive(_ input: String) -> Subscribers.Demand {
+        print("Recived Value: ", input)
+        return .max(3)
+        // 위의 메서드에서 request했던 걸 바꿀 수 있음
+
+    }
+    
+    func receive(completion: Subscribers.Completion<Never>) {
+        print("Completed")
+    }
+}
+
+class ViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let publisher = ["1", "2", "3", "4", "5"].publisher
+        let subscriber = StringSubscriber() // 나는 구독자
+        let subject = PassthroughSubject<String, MyError>()
+    }
+}
 ```
