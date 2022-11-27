@@ -204,9 +204,61 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let publisher = ["1", "2", "3", "4", "5"].publisher
         let subscriber = StringSubscriber() // 나는 구독자
         let subject = PassthroughSubject<String, MyError>()
+        
+
+        subject.subscribe(subscriber)
+        let subscription = subject.sink { (completion) in
+            print("🍏 Received Completion from sink")
+        } receiveValue: { (string) in
+            print("🍎 Received \(string) from sink")
+        }
+
+        
+        subject.send("A")
+        subject.send("1")
+        subject.send("B")
+        subject.send("2")
+        subject.send("C")
+        subject.send("3")
+
     }
 }
 ```
+- 결과
+```
+--Received Subscription
+--Recived Value:  A
+🍎 Received A from sink
+🍎 Received 1 from sink
+🍎 Received B from sink
+🍎 Received 2 from sink
+🍎 Received C from sink
+🍎 Received 3 from sink
+```
+---
+## Section3. Transforming Operators
+### 15강 - Collect
+- 개별 요소들을 배열로 모아줌
+```swift
+["1", "2", "3", "4", "5"].publisher.sink {
+    print($0)
+    //1
+    //2
+    //3
+    //4
+    //5
+}
+```
+- `collect()` 사용했을 때
+```swift
+["1", "2", "3", "4", "5"].publisher.collect().sink {
+    print($0)
+    //["1", "2", "3", "4", "5"]
+}
+```
+### 16강 - map
+### 17강 - map KeyPath
+### 18강 - flatMap
+### 19강 - replaceNil

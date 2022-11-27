@@ -18,7 +18,7 @@ class StringSubscriber: Subscriber {
     
     func receive(subscription: Subscription) {
         print("--Received Subscription")
-        subscription.request(.max(2)) // backpressure - 3개의 결과만 받겠다! 네가 가진 게 100개라도 난 3개만 필요해
+        subscription.request(.max(1)) // backpressure - 3개의 결과만 받겠다! 네가 가진 게 100개라도 난 3개만 필요해
     }
     
     func receive(_ input: String) -> Subscribers.Demand {
@@ -43,24 +43,25 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // Subject : Publisher, Subscribers
-        let publisher = ["1", "2", "3", "4", "5"].publisher
+//        let publisher = ["1", "2", "3", "4", "5"].publisher
         let subscriber = StringSubscriber() // 나는 구독자
         let subject = PassthroughSubject<String, MyError>()
         
 
-//        subject.subscribe(subscriber)
-        let subs = subject.sink { completion in
-            switch completion {
-            case .finished:
-                print("finished")
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        } receiveValue: { value in
-            print(value)
+        subject.subscribe(subscriber)
+        let subscription = subject.sink { (completion) in
+            print("🍏 Received Completion from sink")
+        } receiveValue: { (string) in
+            print("🍎 Received \(string) from sink")
         }
+
         
-        subject.send("시작")
+        subject.send("A")
+        subject.send("1")
+        subject.send("B")
+        subject.send("2")
+        subject.send("C")
+        subject.send("3")
 
     }
 }
