@@ -259,6 +259,8 @@ class ViewController: UIViewController {
 }
 ```
 ### 16강 - map
+```swift
+```
 ### 17강 - map KeyPath
 ### 18강 - flatMap
 ### 19강 - replaceNil
