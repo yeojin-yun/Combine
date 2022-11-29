@@ -260,6 +260,15 @@ class ViewController: UIViewController {
 ```
 ### 16강 - map
 ```swift
+["1", "2", "3", "4", "5"].publisher.sink {
+    print($0)
+    //1
+    //2
+    //3
+    //4
+    //5
+}
+
 ```
 ### 17강 - map KeyPath
 ### 18강 - flatMap
