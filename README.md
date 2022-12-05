@@ -260,15 +260,20 @@ class ViewController: UIViewController {
 ```
 ### 16강 - map
 ```swift
-["1", "2", "3", "4", "5"].publisher.sink {
-    print($0)
-    //1
-    //2
-    //3
-    //4
-    //5
-}
+let numberFormatter = NumberFormatter()
+numberFormatter.numberStyle = .spellOut
 
+[123, 45, 67].publisher.map {
+    numberFormatter.string(from: NSNumber(integerLiteral: $0)) ?? ""
+}.sink {
+    print($0)
+}
+```
+- 결과
+```swift
+one hundred twenty-three
+forty-five
+sixty-seven
 ```
 ### 17강 - map KeyPath
 ### 18강 - flatMap
