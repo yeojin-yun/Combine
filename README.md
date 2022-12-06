@@ -275,6 +275,26 @@ one hundred twenty-three
 forty-five
 sixty-seven
 ```
+
 ### 17강 - map KeyPath
+```swift
+struct Point {
+    let x: Int
+    let y: Int
+}
+
+let publisher = PassthroughSubject<Point, Never>()
+
+publisher.map(\.x, \.y).sink { x, y in
+    print("x is \(x) and y is \(y)")
+}
+
+publisher.send(Point(x: 2, y: 10))
+
+```
+- 결과
+```
+x is 2 and y is 10
+```
 ### 18강 - flatMap
 ### 19강 - replaceNil

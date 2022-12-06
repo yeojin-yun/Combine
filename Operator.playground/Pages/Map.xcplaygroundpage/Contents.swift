@@ -9,3 +9,9 @@ numberFormatter.numberStyle = .spellOut
 }.sink {
     print($0)
 }
+
+/*
+ one hundred twenty-three
+ forty-five
+ sixty-seven
+ */
