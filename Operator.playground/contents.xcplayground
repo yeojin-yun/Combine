@@ -4,5 +4,6 @@
         <page name='Collect'/>
         <page name='Map'/>
         <page name='map KeyPath'/>
+        <page name='flatMap'/>
     </pages>
 </playground>

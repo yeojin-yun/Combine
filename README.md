@@ -297,4 +297,76 @@ publisher.send(Point(x: 2, y: 10))
 x is 2 and y is 10
 ```
 ### 18강 - flatMap
+```swift
+struct School {
+    let name: String
+    let numberOfStudents: CurrentValueSubject<Int, Never>
+    
+    init(name: String, numberOfStudents: Int) {
+        self.name = name
+        self.numberOfStudents = CurrentValueSubject(numberOfStudents)
+    }
+}
+
+let citySchool = School(name: "citySchool", numberOfStudents: 10)
+
+let publisher = CurrentValueSubject<School, Never>(citySchool)
+
+publisher
+    .flatMap { $0.numberOfStudents }
+    .sink { print("results: ", $0) }
+
+
+let townSchool = School(name: "타운스쿨", numberOfStudents: 50)
+//results:  10
+
+publisher.value = townSchool
+//results:  10
+//results:  50
+
+citySchool.numberOfStudents.value += 1
+//results:  10
+//results:  50
+//results:  11
+
+townSchool.numberOfStudents.value -= 3
+//results:  10
+//results:  50
+//results:  11
+//results:  47
+```
+- flatMap은 사용자가 지정하는 최대 갯수까지 업스트림 publisher의 모든 요소를 새 publisher로 변환
+- 그래서 citySchool과 townSchool의 numberOfStudents 값만 바꿔도 앞에 값 바꾸기 전 요소들도 전부 버퍼링됨
+
+- 만약에 max 값을 정해준다면?
+```swift
+publisher
+    .flatMap(maxPublishers: .max(2), {
+        $0.numberOfStudents
+    })
+    .sink { print("results: ", $0) }
+
+
+
+let townSchool = School(name: "타운스쿨", numberOfStudents: 50)
+//results:  10
+
+publisher.value = townSchool
+//results:  10
+//results:  50
+
+citySchool.numberOfStudents.value += 1
+//results:  10
+//results:  50
+//results:  11
+
+townSchool.numberOfStudents.value -= 3
+//results:  10
+//results:  50
+//results:  11
+//results:  47
+```
+
+
+
 ### 19강 - replaceNil
