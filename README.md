@@ -370,3 +370,104 @@ townSchool.numberOfStudents.value -= 3
 
 
 ### 19강 - replaceNil
+```swift
+["A", "B", nil, "C"].publisher.replaceNil(with: "⭐️")
+    .sink { print($0) }
+```
+
+- 결과
+```
+Optional("A")
+Optional("B")
+Optional("⭐️")
+Optional("C")
+```
+
+- Optional 바인딩을 원할 때는?
+```swift
+["A", "B", nil, "C"].publisher.replaceNil(with: "⭐️")
+    .map { $0! }
+    .sink { print($0) }
+```
+- Optional Binding 결과
+```
+A
+B
+⭐️
+C
+```
+
+### 20강 - replaceEmpty
+```swift
+let empty = Empty<Int, Never>()
+empty
+    .sink(receiveCompletion: { completion in
+    print("completion is \(completion)")
+    
+}, receiveValue: { result in
+    print("results is \(result)")
+})
+```
+
+- 결과
+```
+completion is finished
+```
+
+- replaceEmpty 사용
+```swift
+let empty = Empty<Int, Never>()
+empty
+    //.replaceEmpty(with: 1)
+    .sink(receiveCompletion: { completion in
+    print("completion is \(completion)")
+    
+}, receiveValue: { result in
+    print("results is \(result)")
+})
+```
+
+- replaceEmpty 사용 결과
+```
+results is 1
+completion is finished
+```
+
+### 21강 - scan
+- scan의 첫 번째 파라미터 initialResult
+- scan의 두 번째 파라미터 nextPartialResult
+- initialResult에 upstream 발행자로부터 emit된 요소를 인자로 받음 
+```swift
+let publisher = (1...3).publisher
+
+publisher.scan([1]) { numbers, value -> [Int] in
+    //initial Array = [1]
+    numbers + [value]
+}.sink {
+    print($0)
+}
+```
+- 결과
+```
+[1, 1]
+[1, 1, 2]
+[1, 1, 2, 3]
+```
+
+- initial Array를 [1, 2]로 설정했을 때 코드와 결과
+```swift
+let publisher = (1...3).publisher
+
+publisher.scan([1, 2]) { numbers, value -> [Int] in
+    //initial Array = []
+    numbers + [value]
+}.sink {
+    print($0)
+}
+```
+```
+[1, 2, 1]
+[1, 2, 1, 2]
+[1, 2, 1, 2, 3]
+
+```
