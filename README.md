@@ -471,3 +471,5 @@ publisher.scan([1, 2]) { numbers, value -> [Int] in
 [1, 2, 1, 2, 3]
 
 ```
+---
+### 22강
