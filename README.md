@@ -472,4 +472,49 @@ publisher.scan([1, 2]) { numbers, value -> [Int] in
 
 ```
 ---
-### 22강
+### 24강 - filter
+```swift
+let numbers = (1...8).publisher
+
+numbers.filter { $0 % 2 == 0 }
+    .sink { print("filtering value is",$0)}
+```
+- 결과
+```
+filtering value is 2
+filtering value is 4
+filtering value is 6
+filtering value is 8
+
+```
+
+### 25강 - removeDuplicates
+- 중복되는 요소가 모두 제거되어(removeDuplicates) 하나의 결과만 나옴
+```swift
+let words = "apple apple fruit fruit mango mango watermelon watermelon".components(separatedBy: " ").publisher
+
+words
+    .removeDuplicates()
+    .sink { print($0) }
+```
+- 결과
+```
+apple
+fruit
+mango
+watermelon
+```
+### 26강 - CompactMap
+```swift
+let strings = ["a", "1.24", "b", "3.45", "6.7"].publisher
+    .compactMap { Float($0) }
+    .sink { print($0) }
+```
+
+- 결과
+```
+ 1.24
+ 3.45
+ 6.7
+```
+### 27강
