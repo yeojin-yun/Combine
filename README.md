@@ -517,4 +517,46 @@ let strings = ["a", "1.24", "b", "3.45", "6.7"].publisher
  3.45
  6.7
 ```
-### 27강
+### 27강 - ignoreOutput
+    모든 업스트림 요소를 무시하지만 업스트림 게시자의 완료 상태(완료 또는 실패)는 전달
+
+```swift
+let numbers = (1...5000).publisher
+numbers.ignoreOutput().sink {
+    print("revciveCompletion", $0)
+} receiveValue: {
+    print("receiveValue", $0)
+}
+```
+- 결과
+```
+revciveCompletion finished
+```
+
+### 28강 - first
+    스트림의 첫 번째 요소만 publish하고 끝냄  
+```swift
+let numbers = (1...9).publisher
+
+numbers.first(where: { $0 % 2 == 0 })
+    .sink { print($0) }
+```
+
+- 결과
+```
+2
+```
+
+### 29강 - last
+    스트림의 마지막 요소만 publish하고 끝냄  
+```swift
+let numbers = (1...9).publisher
+
+numbers.last(where: { $0 % 2 == 0 })
+    .sink { print($0) }
+```
+
+- 결과
+```
+8
+```

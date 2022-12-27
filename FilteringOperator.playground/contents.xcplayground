@@ -5,5 +5,7 @@
         <page name='removeDuplicates'/>
         <page name='compactMap'/>
         <page name='ignoreOutput'/>
+        <page name='first'/>
+        <page name='last'/>
     </pages>
 </playground>
