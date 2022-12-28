@@ -560,3 +560,39 @@ numbers.last(where: { $0 % 2 == 0 })
 ```
 8
 ```
+
+### 30강 - dropFirst
+```swift
+let numbers = (1...10).publisher
+
+numbers.dropFirst(8)
+    .sink { print($0) }
+```
+
+- 결과
+```
+//9, 10
+```
+
+### 31강 - dropWhile
+`while` 클로저의 값이 false를 return할 때까지 elements를 방출
+```swift
+let numbers = (1...10).publisher
+
+numbers.drop(while: { $0 % 3 != 0 })
+    .sink { print($0) }
+
+```
+- 결과
+```
+3
+4
+5
+6
+7
+8
+9
+10
+
+```
+

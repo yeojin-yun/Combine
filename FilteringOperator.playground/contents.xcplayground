@@ -7,5 +7,7 @@
         <page name='ignoreOutput'/>
         <page name='first'/>
         <page name='last'/>
+        <page name='dropFirst'/>
+        <page name='dropWhile'/>
     </pages>
 </playground>
