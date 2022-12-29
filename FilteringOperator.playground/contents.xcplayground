@@ -9,5 +9,7 @@
         <page name='last'/>
         <page name='dropFirst'/>
         <page name='dropWhile'/>
+        <page name='dropUntilOutputFrom'/>
+        <page name='prefix'/>
     </pages>
 </playground>
