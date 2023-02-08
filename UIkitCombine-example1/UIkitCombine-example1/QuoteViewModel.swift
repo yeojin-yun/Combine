@@ -30,6 +30,7 @@ class QuoteViewModel {
         self.dataService = dataService
     }
     
+    //4
     func transform(input: AnyPublisher<Input, Never>) -> AnyPublisher<Output, Never> {
         print(#function)
         input
@@ -43,6 +44,7 @@ class QuoteViewModel {
         return output1.eraseToAnyPublisher()
     }
     
+    //5
     func handleGetRandomQuote() {
         print(#function)
         output1.send(.toggleButton(isEnabled: false))

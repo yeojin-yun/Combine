@@ -18,19 +18,20 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(#function)
-        setUI()
-        bind()
+        print(#function) //1
+        setUI() //2
+        bind() //3
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print(#function)
+        print(#function) //5
         input.send(.viewDidAppear)
     }
     
     func bind() {
         print(#function)
+        //bind(연결) - output을 구독하는 행위
         let output = viewModel.transform(input: input.eraseToAnyPublisher())
         output
             .receive(on: DispatchQueue.main)
