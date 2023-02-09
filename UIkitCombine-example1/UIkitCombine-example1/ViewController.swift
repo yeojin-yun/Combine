@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class ViewController: UIViewController {
+class FirstViewController: UIViewController {
     private let viewModel = QuoteViewModel()
     private let input: PassthroughSubject<Input, Never> = .init()
     private var cancellables = Set<AnyCancellable>()
@@ -49,14 +49,14 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController {
+extension FirstViewController {
     @objc func buttonTapped(_ sender: UIButton) {
         print(#function)
         input.send(.refreshButtonDidTap)
     }
 }
 
-extension ViewController {
+extension FirstViewController {
     func setUI() {
         print(#function)
         setAttributes()
@@ -65,6 +65,7 @@ extension ViewController {
     
     func setAttributes() {
         print(#function)
+        view.backgroundColor = .white
         label.numberOfLines = 0
         
         var config = UIButton.Configuration.filled()
