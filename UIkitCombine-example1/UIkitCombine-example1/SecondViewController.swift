@@ -18,6 +18,7 @@ class SecondViewController: UIViewController {
     var switchSubscriber: AnyCancellable?
     var viewModel: ViewModel = ViewModel()
     
+    var boolLabel: UILabel = UILabel()
     let acceptSwitch: UISwitch = UISwitch()
     let submitButton: UIButton = UIButton()
 
@@ -35,6 +36,7 @@ class SecondViewController: UIViewController {
 extension SecondViewController {
     @objc func switchTapped(_ sender: UISwitch) {
         viewModel.isSubmitAllowed = sender.isOn
+        boolLabel.text = String(viewModel.isSubmitAllowed)
         print(viewModel.isSubmitAllowed)
     }
 }
@@ -51,16 +53,19 @@ extension SecondViewController {
         submitButton.setTitle("submit", for: .normal)
         submitButton.backgroundColor = .blue
         submitButton.setTitleColor(.white, for: .normal)
-        
+        boolLabel.text = "switch 값"
     }
     
     func setConstraint() {
-        [acceptSwitch, submitButton].forEach {
+        [acceptSwitch, submitButton, boolLabel].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         NSLayoutConstraint.activate([
+            boolLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            boolLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
             acceptSwitch.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             acceptSwitch.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50),
             
