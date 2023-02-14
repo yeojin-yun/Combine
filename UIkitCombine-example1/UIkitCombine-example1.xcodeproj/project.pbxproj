@@ -18,6 +18,7 @@
 		0C7ABF3F29927DBE002097B8 /* QuoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7ABF3E29927DBE002097B8 /* QuoteService.swift */; };
 		0C7ABF4129952679002097B8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7ABF4029952679002097B8 /* MainViewController.swift */; };
 		0C7ABF4329952863002097B8 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7ABF4229952863002097B8 /* SecondViewController.swift */; };
+		0C7ABF46299BCEA5002097B8 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 0C7ABF45299BCEA5002097B8 /* CombineCocoa */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C7ABF46299BCEA5002097B8 /* CombineCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,16 +70,16 @@
 			children = (
 				0C7ABF262991480A002097B8 /* AppDelegate.swift */,
 				0C7ABF282991480A002097B8 /* SceneDelegate.swift */,
+				0C7ABF4029952679002097B8 /* MainViewController.swift */,
 				0C7ABF2A2991480A002097B8 /* ViewController.swift */,
+				0C7ABF3A29914977002097B8 /* QuoteModel.swift */,
+				0C7ABF3C299149A5002097B8 /* QuoteViewModel.swift */,
+				0C7ABF3E29927DBE002097B8 /* QuoteService.swift */,
+				0C7ABF4229952863002097B8 /* SecondViewController.swift */,
 				0C7ABF2C2991480A002097B8 /* Main.storyboard */,
 				0C7ABF2F2991480C002097B8 /* Assets.xcassets */,
 				0C7ABF312991480C002097B8 /* LaunchScreen.storyboard */,
 				0C7ABF342991480C002097B8 /* Info.plist */,
-				0C7ABF3A29914977002097B8 /* QuoteModel.swift */,
-				0C7ABF3C299149A5002097B8 /* QuoteViewModel.swift */,
-				0C7ABF3E29927DBE002097B8 /* QuoteService.swift */,
-				0C7ABF4029952679002097B8 /* MainViewController.swift */,
-				0C7ABF4229952863002097B8 /* SecondViewController.swift */,
 			);
 			path = "UIkitCombine-example1";
 			sourceTree = "<group>";
@@ -98,6 +100,9 @@
 			dependencies = (
 			);
 			name = "UIkitCombine-example1";
+			packageProductDependencies = (
+				0C7ABF45299BCEA5002097B8 /* CombineCocoa */,
+			);
 			productName = "UIkitCombine-example1";
 			productReference = 0C7ABF232991480A002097B8 /* UIkitCombine-example1.app */;
 			productType = "com.apple.product-type.application";
@@ -126,6 +131,9 @@
 				Base,
 			);
 			mainGroup = 0C7ABF1A2991480A002097B8;
+			packageReferences = (
+				0C7ABF44299BCEA5002097B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
+			);
 			productRefGroup = 0C7ABF242991480A002097B8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -378,6 +386,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0C7ABF44299BCEA5002097B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0C7ABF45299BCEA5002097B8 /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C7ABF44299BCEA5002097B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0C7ABF1B2991480A002097B8 /* Project object */;
 }

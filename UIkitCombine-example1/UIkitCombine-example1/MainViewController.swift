@@ -11,6 +11,7 @@ class MainViewController: UIViewController {
     
     let firstButton: UIButton = UIButton()
     let secondButton: UIButton = UIButton()
+    let thirdButton: UIButton = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,17 +41,21 @@ extension MainViewController {
     }
     
     func setAttributes() {
-        firstButton.setTitle("sample1", for: .normal)
-        firstButton.backgroundColor = .blue
-        firstButton.setTitleColor(.white, for: .normal)
+
+
         
-        secondButton.setTitle("sample2", for: .normal)
-        secondButton.backgroundColor = .blue
-        secondButton.setTitleColor(.white, for: .normal)
+        [firstButton, secondButton, thirdButton].forEach {
+            $0.backgroundColor = .blue
+            $0.setTitleColor(.white, for: .normal)
+            
+            firstButton.setTitle("sample1", for: .normal)
+            secondButton.setTitle("sample2", for: .normal)
+            thirdButton.setTitle("sample2", for: .normal)
+        }
     }
     
     func setConstraints() {
-        [firstButton, secondButton].forEach {
+        [firstButton, secondButton, thirdButton].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -61,6 +66,9 @@ extension MainViewController {
             
             secondButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             secondButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 50),
+            
+            thirdButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            thirdButton.topAnchor.constraint(equalTo: secondButton.bottomAnchor, constant: 50)
         ])
     }
     

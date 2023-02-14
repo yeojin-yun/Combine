@@ -10,7 +10,6 @@ import Combine
 
 final class ViewModel {
     @Published var isSubmitAllowed: Bool = false
-    
 }
 
 class SecondViewController: UIViewController {
