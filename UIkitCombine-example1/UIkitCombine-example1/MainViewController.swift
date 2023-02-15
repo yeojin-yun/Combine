@@ -30,6 +30,11 @@ extension MainViewController {
         let vc = SecondViewController()
         self.present(vc, animated: true)
     }
+    
+    @objc func thirdBtnTapped(_ sender: UIButton) {
+        let vc = ThirdViewController()
+        self.present(vc, animated: true)
+    }
 }
 
 
@@ -75,5 +80,6 @@ extension MainViewController {
     func setAddTarget() {
         firstButton.addTarget(self, action: #selector(firstBtnTapped(_:)), for: .touchUpInside)
         secondButton.addTarget(self, action: #selector(secondBtnTapped(_:)), for: .touchUpInside)
+        thirdButton.addTarget(self, action: #selector(thirdBtnTapped(_:)), for: .touchUpInside)
     }
 }

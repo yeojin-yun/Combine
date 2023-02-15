@@ -596,3 +596,35 @@ numbers.drop(while: { $0 % 3 != 0 })
 
 ```
 
+---
+## combine의 주요 요소
+
+### `protocol` : Publisher
+
+- Publisher transmits values that can change over time
+- 시간이 지남에 따라 변경될 수 있는 값을 전송
+- Output과 Failure라는 두 가지의 associated type을 가짐
+- 모든 publisher들은 다양한 이벤트들을 방출할 수 있음
+    - Output type의 output
+    - 성공적인 completion
+    - Failure type의 에러를 가진 실패
+
+### `protocol` : Subscriber
+
+- Subscriber receives those values from the publisher
+- 구독자는 publisher로부터 그 값들을 받음
+- publisher와 operators는 published된 이벤트들을 수신하지 않는 한 의지가 없음 → 구독자가 있어야 함
+- Input과 Failure라는 두 가지의 associated type을 가짐
+    - 구독자는 publisher로부터 값의 스트림 또는 이벤트의 완료/실패를 받음
+
+### Subscription
+
+- Subscription represents the connection of a subscriber to a publisher
+- subscriber와 publisher의 연결을 나타냄
+
+### Operator
+
+- publisher를 호출하여 publisher와 같거나 다른 publisher를 return하는 연산자
+- 값을 변경하거나, 값을 추가하거나, 값을 제거하거나, 기타 많은 작업을 수행할 수 있음
+
+---
