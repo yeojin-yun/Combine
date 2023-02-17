@@ -7,24 +7,25 @@
 // a single view with a button in the middle and the button background color changes with the button action. 
 
 import UIKit
+import Combine
 
 class ThirdViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let cancellable = getPosts().sink(receiveCompletion: { _ in }) { data in
+            print(data)
+        }
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getPosts() -> AnyPublisher<Data, URLError> {
+        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else { fatalError("Invalide URL")
+        }
+        
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map { $0.data }
+            .eraseToAnyPublisher()
     }
-    */
 
 }
