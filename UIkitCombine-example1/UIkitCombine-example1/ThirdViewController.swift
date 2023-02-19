@@ -13,10 +13,8 @@ class ThirdViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let cancellable = getPosts().sink(receiveCompletion: { _ in }) { data in
-            print(data)
-        }
         
+        testCombine()
     }
     
     func getPosts() -> AnyPublisher<Data, URLError> {
@@ -27,5 +25,10 @@ class ThirdViewController: UIViewController {
             .map { $0.data }
             .eraseToAnyPublisher()
     }
-
+    
+    func testCombine() {
+        let cancellable = getPosts().sink(receiveCompletion: { _ in }) { data in
+            print(data)
+        }
+    }
 }
