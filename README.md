@@ -595,7 +595,36 @@ numbers.drop(while: { $0 % 3 != 0 })
 10
 
 ```
+### 50강 - URLSession Extension
+```swift
+import UIKit
+import Combine
 
+class ThirdViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        testCombine()
+    }
+    
+    func getPosts() -> AnyPublisher<Data, URLError> {
+        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else { fatalError("Invalide URL")
+        }
+        
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map { $0.data }
+            .eraseToAnyPublisher()
+    }
+    
+    func testCombine() {
+        let cancellable = getPosts().sink(receiveCompletion: { _ in }) { data in
+            print(data)
+        }
+    }
+}
+
+```
 ---
 ## combine의 주요 요소
 
