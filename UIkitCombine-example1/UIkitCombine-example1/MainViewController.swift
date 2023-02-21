@@ -55,7 +55,7 @@ extension MainViewController {
             
             firstButton.setTitle("sample1", for: .normal)
             secondButton.setTitle("sample2", for: .normal)
-            thirdButton.setTitle("sample2", for: .normal)
+            thirdButton.setTitle("sample3", for: .normal)
         }
     }
     

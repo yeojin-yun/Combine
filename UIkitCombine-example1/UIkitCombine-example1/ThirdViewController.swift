@@ -9,20 +9,27 @@
 import UIKit
 import Combine
 
+struct Post: Codable {
+    let title: String
+    let body: String
+}
+
 class ThirdViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .yellow
         testCombine()
     }
     
-    func getPosts() -> AnyPublisher<Data, URLError> {
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else { fatalError("Invalide URL")
+    func getPosts() -> AnyPublisher<[Post], Error> {
+        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else {
+            fatalError("Invalide URL")
         }
         
         return URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }
+            .decode(type: [Post].self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
     }
     
