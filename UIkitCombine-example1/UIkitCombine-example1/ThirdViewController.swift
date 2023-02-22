@@ -16,10 +16,16 @@ struct Post: Codable {
 
 class ThirdViewController: UIViewController {
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .yellow
         testCombine()
+        
+        let cancellable = getPosts().sink(receiveCompletion: { _ in }) { data in
+            print(data)
+        }
     }
     
     func getPosts() -> AnyPublisher<[Post], Error> {
