@@ -8,5 +8,6 @@
         <page name='replaceNil'/>
         <page name='scan'/>
         <page name='replaceEmpty'/>
+        <page name='Print'/>
     </pages>
 </playground>

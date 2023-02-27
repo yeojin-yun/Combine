@@ -626,6 +626,29 @@ class ThirdViewController: UIViewController {
 
 ```
 ---
+### 53강 - Printing events
+```swift
+let publisher = (1...20).publisher
+publisher
+    .print("Debugging")
+    .sink {
+    print($0)
+}
+
+```
+- 결과
+```swift
+Debugging: receive subscription: (1...3)
+Debugging: request unlimited
+Debugging: receive value: (1)
+1
+Debugging: receive value: (2)
+2
+Debugging: receive value: (3)
+3
+Debugging: receive finished
+```
+---
 ## combine의 주요 요소
 
 ### `protocol` : Publisher
