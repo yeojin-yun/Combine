@@ -63,5 +63,4 @@ class QuoteViewModel {
             }
             .store(in: &cancelables)
     }
-    
 }

@@ -32,7 +32,7 @@ extension MainViewController {
     }
     
     @objc func thirdBtnTapped(_ sender: UIButton) {
-        let vc = ThirdViewController()
+        let vc = ThirdTableViewController()
         self.present(vc, animated: true)
     }
 }
