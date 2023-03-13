@@ -32,7 +32,8 @@ extension MainViewController {
     }
     
     @objc func thirdBtnTapped(_ sender: UIButton) {
-        let vc = ThirdTableViewController()
+        let vc = ThirdViewController()
+        vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
 }
